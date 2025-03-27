@@ -1,10 +1,11 @@
 package streams;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -73,7 +74,7 @@ public class StreamTask {
 	}
 	
 /**Given a list of integers, filter out only the even numbers using Java 8 Streams..*/
-	 List<Integer> numbers = Arrays.asList(10,15,20,25,30);
+	 List<Integer> numbers = Arrays.asList(10,15,20,25,30,10,25);
 	 List<Integer> evenNumberList= numbers.stream()
 			 							  .filter(num -> num % 2 == 0)
 			 							  .collect(Collectors.toList());
@@ -87,11 +88,79 @@ public class StreamTask {
 	uppercaseString.forEach(s->System.out.print(s+" "));
 
 	
-/**Given a list of integers, find the maximum number using Java 8 Streams*/
-	//test
+/**Given a list of strings, find the words with length greater than 3.
+*/
+	System.out.println("Given a list of strings, find the words with length greater than 3.");
+	word1.stream().filter(word -> word.length()>3).forEach(System.out::println);
 	
+/**Convert a list of numbers into a Set (removes duplicates).
+*/
 
+	System.out.println("Convert a list of numbers into a Set (removes duplicates)");
+	Set<Integer> set = numbers.stream().collect(Collectors.toSet());
+	System.out.println(set);
+/*Convert a list of numbers [5, 10, 15, 20] into a single string "5-10-15-20" using Collectors.*/
 	
+	System.out.println("Convert a list of numbers [5, 10, 15, 20] into a single string \"5-10-15-20\" using Collectors.");
 	
+	String sentenceString =numbers.stream()
+								  .map(String::valueOf)
+								  .collect(Collectors.joining("-"))
+								  ;
+	System.out.println(sentenceString);
+	
+/*
+Given a set, convert it into a sorted list in descending order.
+*/
+	System.out.println("\r\n"
+			+ "Given a set, convert it into a sorted list in descending order.\r\n"
+			+ "");
+	 Set<Integer> numberSet = new HashSet<>(Arrays.asList(10, 5, 20, 15, 25));
+
+     // Convert Set to List and sort in descending order
+     List<Integer> sortedList = numberSet.stream()
+                                         .sorted(Comparator.reverseOrder()) // Sort in descending order
+                                         .collect(Collectors.toList());
+     
+     System.out.println(sortedList);
+	
+/*Convert Set<String> ({"Banana", "Apple", "Mango", "Orange"}) into a sorted List in descending order. */
+     
+     System.out.println("Convert Set<String> ({\"Banana\", \"Apple\", \"Mango\", \"Orange\"}) into a sorted List in descending order. ");
+     
+     Set<String> stringSet= new HashSet<String>(Arrays.asList("Banana","Apple","Mango","Orange"));
+     
+     List<String> list =stringSet.stream()
+     			.sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+     
+     list.forEach(System.out::println);
+     
+     
+/*
+ * Given a Map<String, Integer>, find all keys where the value is greater than 50.
+
+Example: { "A"=40, "B"=60, "C"=30, "D"=80 } → Output: ["B", "D"]
+*/
+     
+     Map<String, Integer> map=new HashMap<String, Integer>();
+     map.put("A", 40);
+     map.put("B", 60);
+     map.put("C", 30);
+     map.put("D", 80);
+     
+     List<String> mapList= map.entrySet()
+    		 					.stream()
+    		 					.filter(n-> n.getValue()>50)
+    		 					.map(Map.Entry::getKey).collect(Collectors.toList());
+     System.out.println(mapList);
+     
+ 
+/*Find all keys from a Map<String, Integer> where the value is even.*/     
+    
+     
+     
+     
+     
+     
 	}
 }
