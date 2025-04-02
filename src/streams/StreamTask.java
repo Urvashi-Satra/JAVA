@@ -155,12 +155,24 @@ Example: { "A"=40, "B"=60, "C"=30, "D"=80 } → Output: ["B", "D"]
      System.out.println(mapList);
      
  
-/*Find all keys from a Map<String, Integer> where the value is even.*/     
     
+     String[] data = {"Alice", "Bob", "Alice", "Charlie", "Bob", "David", "Alice"};
+
+     HashMap<String, Integer> map1 = new HashMap<>();
+     HashSet<String> setdata = new HashSet<>();
+     for(int i=0;i<data.length;i++) {
+    	 map1.put(data[i], map1.getOrDefault(data[i], 0)+1);
+    	 setdata.add(data[i]);
+     }
      
      
+     for(Map.Entry<String, Integer> e:map1.entrySet()) {
+    	 System.out.println("key : "+e.getKey()+ " Value: "+e.getValue());
+     }
      
-     
+     for(String g : setdata) {
+    	 System.out.println(g);
+     }
      
 	}
 }

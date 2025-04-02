@@ -224,11 +224,11 @@ public class StreamExample1 {
 		 * */
 		        
 		        List<Employee> employees = Arrays.asList(
-		        	    new Employee("Alice", 75000),
-		        	    new Employee("Bob", 48000),
-		        	    new Employee("Charlie", 120000),
-		        	    new Employee("David", 68000),
-		        	    new Employee("Eve", 95000)
+		        	    new Employee(0, "Alice", null, 75000),
+		        	    new Employee(0, "Bob", null, 48000),
+		        	    new Employee(0, "Charlie", null, 120000),
+		        	    new Employee(0, "David", null, 68000),
+		        	    new Employee(0, "Eve", null, 95000)
 		        	);
 
 		        Map<String, List<Employee>> groupedEmployees =    employees.stream().filter(e -> e.getSalary() >50000)
